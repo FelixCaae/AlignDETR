@@ -37,7 +37,7 @@ class ManyToOneCriterion(BaseCriterion):
         2) we supervise each pair of matched ground-truth / prediction (supervise class and box)
     """
 
-    def __init__(self, num_classes, matcher, weight_dict, match_number, loss_type, gamma,alpha,tau):
+    def __init__(self, num_classes, matcher, weight_dict, match_number, gamma,alpha,tau):
         """ Create the criterion.
         Parameters:
             num_classes: number of object categories, omitting the special no-object category
@@ -55,7 +55,6 @@ class ManyToOneCriterion(BaseCriterion):
         self.pos_norm_type = 'softmax'
         self.weight_dict = weight_dict
         self.match_number = match_number
-        self.loss_type = loss_type
         #hyper parameters for qal and eqal
         self.gamma = gamma
         self.alpha = alpha   # not the alpha in focal loss!

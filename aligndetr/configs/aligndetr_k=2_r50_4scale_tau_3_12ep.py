@@ -8,7 +8,7 @@ lr_multiplier = get_config("common/coco_schedule.py").lr_multiplier_12ep
 train = get_config("common/train.py").train
 
 model.criterion.match_num = [2,2,2,2,2,2,1]
-model.criterion.tau = 1.5
+model.criterion.tau = 3
 # modify training config
 train.init_checkpoint = "detectron2://ImageNetPretrained/torchvision/R-50.pkl"
 train.output_dir = "./output/aligndetr_k2_12ep"

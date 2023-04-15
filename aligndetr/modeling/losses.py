@@ -43,24 +43,24 @@ def get_local_rank( quality, indices):
     bs = len(indices)
     device = quality.device
     tgt_size = [len(tgt_ind) for _,tgt_ind in indices]
-    num_gt = [max(tgt_ind)+1 for _,tgt_ind in indices]
     ind_start = 0
     rank_list = []
     for i in range(bs):
         if  tgt_size[i] == 0:
             rank_list.append(torch.zeros(0,dtype=torch.long,device=device))
             continue     
+        num_tgt = max(indices[i][1]) + 1
         # split quality of one item
         quality_per_img = quality[ind_start:ind_start+tgt_size[i]]
         ind_start += tgt_size[i]
         #suppose candidate bag sizes are equal        
-        k = torch.div(tgt_size[i], num_gt[i],rounding_mode='floor')
+        k = torch.div(tgt_size[i], num_tgt,rounding_mode='floor')
         #sort quality in each candidate bag
-        quality_per_img = quality_per_img.reshape(num_gt[i], k)
+        quality_per_img = quality_per_img.reshape(num_tgt, k)
         ind = quality_per_img.sort(dim=-1,descending=True)[1]
         #scatter ranks, eg:[0.3,0.6,0.5] -> [2,0,1]
         rank_per_img = torch.zeros_like(quality_per_img, dtype=torch.long, device = device)
-        rank_per_img.scatter_(-1, ind, torch.arange(k,device=device, dtype=torch.long).repeat(num_gt[i],1))
+        rank_per_img.scatter_(-1, ind, torch.arange(k,device=device, dtype=torch.long).repeat(num_tgt,1))
         rank_list.append(rank_per_img.flatten())
 
     return torch.cat(rank_list, 0)
@@ -81,9 +81,10 @@ def IA_BCE_loss(src_logits,pos_idx_c, src_boxes, target_boxes, indices, avg_fact
         rank_weight = w_prime[rank]
     else:
         rank_weight = w_prime
-   
+    
     t = t * rank_weight
     pos_weights[pos_idx_c] = t 
     neg_weights[pos_idx_c] = (1 -t)    
+    
     loss = -pos_weights * prob.log() - neg_weights * (1-prob).log() 
     return loss.sum()/avg_factor, rank_weight

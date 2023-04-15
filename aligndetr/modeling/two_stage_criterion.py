@@ -26,14 +26,13 @@ class TwoStageCriterion(ManyToOneCriterion):
         matcher,
         weight_dict,
         match_num,
-        loss_type,
         gamma,
         alpha,
         tau,
         two_stage_binary_cls=False,
     ):
         super().__init__(
-            num_classes, matcher, weight_dict,match_num,loss_type,gamma,alpha,tau,
+            num_classes, matcher, weight_dict,match_num,gamma,alpha,tau,
         )
         self.two_stage_binary_cls = two_stage_binary_cls
 

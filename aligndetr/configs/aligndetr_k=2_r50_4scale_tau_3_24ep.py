@@ -1,21 +1,20 @@
 from detrex.config import get_config
-from .models.soto_r50 import model
+from .models.aligndetr_r50 import model
 
 # get default config
 dataloader = get_config("common/data/coco_detr.py").dataloader
 optimizer = get_config("common/optim.py").AdamW
-lr_multiplier = get_config("common/coco_schedule.py").lr_multiplier_24ep
+lr_multiplier = get_config("common/coco_schedule.py").lr_multiplier_12ep
 train = get_config("common/train.py").train
 
 model.criterion.match_num = [2,2,2,2,2,2,1]
-model.criterion.loss_type = 'eqal_ab10'
-model.criterion.tau = 0.16
+model.criterion.tau = 3
 # modify training config
 train.init_checkpoint = "detectron2://ImageNetPretrained/torchvision/R-50.pkl"
-train.output_dir = "/data/output_new/soto_plaink=2_ab10_tau_016_r50_4scale_24ep"
+train.output_dir = "./output/aligndetr_k2_24ep"
 
 # max training iterations
-train.max_iter = 180000 
+train.max_iter = 90000 
 
 # run evaluation every 5000 iters
 train.eval_period = 5000
