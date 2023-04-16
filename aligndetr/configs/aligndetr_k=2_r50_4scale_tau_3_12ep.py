@@ -11,7 +11,7 @@ model.criterion.match_num = [2,2,2,2,2,2,1]
 model.criterion.tau = 3
 # modify training config
 train.init_checkpoint = "detectron2://ImageNetPretrained/torchvision/R-50.pkl"
-train.output_dir = "./output/aligndetr_k2_12ep"
+train.output_dir = "./output/aligndetr_tau_3_k2_12ep"
 
 # max training iterations
 train.max_iter = 90000 
