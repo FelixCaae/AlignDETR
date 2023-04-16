@@ -9,8 +9,10 @@ Our code is based on [detrex](https://github.com/IDEA-Research/detrex) and [dete
 Please refer the [installation guide of detrex](https://detrex.readthedocs.io/en/latest/tutorials/Installation.html) to install detectron2 and detrex first.
 
 ### Clone this repository
+```
 git clone https://github.com/FelixCaae/AlignDETR
 cd AlignDETR
+```
 
 ## Prepare Datasets
 Please place COCO dataset in the datasets directory. It should look like
