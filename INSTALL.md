@@ -4,14 +4,13 @@
 
 ### Install detectron2 and detrex.
 
-Our code is based on [detrex](https://github.com/IDEA-Research/detrex) and [detectron2](https://github.com/facebookresearch/detectron2).
-
 Please refer the [installation guide of detrex](https://detrex.readthedocs.io/en/latest/tutorials/Installation.html) to install detectron2 and detrex first.
 
-### Clone this repository
+### Install this repository
 ```
 git clone https://github.com/FelixCaae/AlignDETR
 cd AlignDETR
+pip install -e .
 ```
 
 ## Prepare Datasets

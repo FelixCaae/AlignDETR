@@ -1,6 +1,5 @@
 # coding=utf-8
-# Copyright 2022 The IDEA Authors. All rights reserved.
-#
+# Copyright 2023 Zhi Cai. All rights reserved.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -12,7 +11,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+# ------------------------------------------------------------------------------------------------
+# BaseCriterion
+# Copyright 2022 The IDEA Authors. All rights reserved.
+# ------------------------------------------------------------------------------------------------
 """
 This is the original implementation of SetCriterion which will be deprecated in the next version.
 
@@ -27,7 +29,7 @@ import numpy as np
 # from detrex.modeling.criterion import SetCriterion
 from detrex.layers import box_cxcywh_to_xyxy, generalized_box_iou,box_iou
 from detrex.utils import get_world_size, is_dist_avail_and_initialized
-from .losses import binary_cross_entropy_loss_with_logits
+from aligndetr.losses import binary_cross_entropy_loss_with_logits
 
 def sigmoid_focal_loss(inputs, targets, num_boxes, alpha: float = 0.25, gamma: float = 2):
     """

@@ -1,3 +1,5 @@
+import projects.aligndetr
+
 import copy
 import torch.nn as nn
 
@@ -8,14 +10,15 @@ from detectron2.config import LazyCall as L
 # from detrex.modeling.matcher import HungarianMatcher
 from detrex.modeling.neck import ChannelMapper
 from detrex.layers import PositionEmbeddingSine
-from aligndetr.modeling import (
+import projects.aligndetr.modeling
+from projects.aligndetr.modeling import (
     AlignDETR,
     TransformerEncoder,
     TransformerDecoder,
     Transformer,
-    AlignDETRCriterion,
-    MixedMatcher
 )
+from aligndetr.criterions import AlignDETRCriterion
+from aligndetr.matchers import  MixedMatcher
 
 model = L(AlignDETR)(
     backbone=L(ResNet)(

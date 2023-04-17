@@ -22,6 +22,9 @@ python tools/train_net.py --config-file  aligndetr/aligndetr_k=2_r50_4scale_12ep
 |[AlignDETR-R50-12ep](aligndetr/configs/aligndetr_k%3D2_r50_4scale_12ep.py)|50.3|67.9|54.8|34.1|53.5|65.1|[Google Drive](https://drive.google.com/file/d/12xSxD_Z9KI8bejSlO1td1XcZ-Ns00rTi/view?usp=share_link)|
 |[AlignDETR-R50-24ep](aligndetr/configs/aligndetr_k%3D2_r50_4scale_24ep.py)|51.4|69.1|55.8|35.5|54.6|65.7|[Google Drive](https://drive.google.com/file/d/1zQYe78fDdCmK3nwbAWYLvGCdQCFsTqoX/view?usp=share_link)|
 
+## Acknowlegements
+
+Our code is based on [detrex](https://github.com/IDEA-Research/detrex) and [detectron2](https://github.com/facebookresearch/detectron2).
 
 ## License
 This project is released under the [Apache 2.0 license](LICENSE).
