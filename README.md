@@ -25,6 +25,18 @@ python tools/train_net.py --config-file  aligndetr/aligndetr_k=2_r50_4scale_12ep
 ## Acknowlegements
 
 Our code is based on [detrex](https://github.com/IDEA-Research/detrex) and [detectron2](https://github.com/facebookresearch/detectron2).
+## Citation
 
+If you are interested in our work and use our method in your research, please cite
+```
+@misc{cai2023aligndetr,
+      title={Align-DETR: Improving DETR with Simple IoU-aware BCE loss}, 
+      author={Zhi Cai and Songtao Liu and Guodong Wang and Zheng Ge and Xiangyu Zhang and Di Huang},
+      year={2023},
+      eprint={2304.07527},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
 ## License
 This project is released under the [Apache 2.0 license](LICENSE).
