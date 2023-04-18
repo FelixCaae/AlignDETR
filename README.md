@@ -1,7 +1,7 @@
 # AlignDETR
 ## Introduction
 AlignDETR is a variant of DETR(DEtection with Transformer), with a simple IoU-Aware BCE loss and better performance! It aims to solve the issue of misalignment problem spotted in DETR's output.
-For more details, please refer to our [paper on Arxiv](). 
+For more details, please refer to our [paper on Arxiv](https://arxiv.org/abs/2304.07527). 
 <img src="assets/aligndetr.png" >
 
 ## Installation 
