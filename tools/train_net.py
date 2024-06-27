@@ -30,7 +30,7 @@ from detectron2.engine import (
     launch,
 )
 from detectron2.engine.defaults import create_ddp_model
-from detectron2.evaluation import inference_on_dataset, print_csv_format, averaged_loss_on_dataset
+from detectron2.evaluation import inference_on_dataset, print_csv_format
 from detectron2.utils import comm
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
 logger = logging.getLogger("detrex")
@@ -129,15 +129,11 @@ class Trainer(SimpleTrainer):
 
 def do_test(cfg, model, loss_mode=False):
     if "evaluator" in cfg.dataloader:
-        if loss_mode:
-            ret = averaged_loss_on_dataset( model, instantiate(cfg.dataloader.test), )
-            ret = comm.reduce_dict({'loss':ret})
-        else:
-            ret = inference_on_dataset(
-                model, instantiate(cfg.dataloader.test), instantiate(cfg.dataloader.evaluator)
-            )
-            print_csv_format(ret)
-        return ret
+        ret = inference_on_dataset(
+            model, instantiate(cfg.dataloader.test), instantiate(cfg.dataloader.evaluator)
+        )
+        print_csv_format(ret)
+    return ret
 
 # def do_log_test(cfg, model)
 def do_train(args, cfg):
