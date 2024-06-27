@@ -25,6 +25,10 @@ python tools/train_net.py --config-file  aligndetr/aligndetr_k=2_r50_4scale_12ep
 ## Acknowlegements
 
 Our code is based on [detrex](https://github.com/IDEA-Research/detrex) and [detectron2](https://github.com/facebookresearch/detectron2).
+
+### News
+You can also use Align-DETR directly in [detrex](https://github.com/IDEA-Research/detrex/tree/main/projects/align_detr) and [mmdetection](https://github.com/open-mmlab/mmdetection/tree/main/projects/AlignDETR) now!
+
 ## Citation
 
 If you are interested in our work and use our method in your research, please cite
